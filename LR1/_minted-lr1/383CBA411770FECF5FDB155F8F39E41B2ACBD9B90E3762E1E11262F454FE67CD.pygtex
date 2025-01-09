@@ -1,0 +1,49 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{} Define parameters}
+\PYG{n}{Fs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Sampling frequency}
+\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{Fs}\PYG{p}{:}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Time vector}
+
+\PYG{c}{\PYGZpc{} Create message signal}
+\PYG{n}{Am}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Amplitude of message signal}
+\PYG{n}{fm}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Frequency of message signal}
+\PYG{n}{message\PYGZus{}signal}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Am}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{sin}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{pi}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{fm}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{} Create carrier signal}
+\PYG{n}{Ac}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Amplitude of carrier signal}
+\PYG{n}{fc}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{50}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Frequency of carrier signal}
+\PYG{n}{carrier\PYGZus{}signal}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{Ac}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{sin}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{pi}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{fc}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{} Perform Amplitude Modulation (AM)}
+\PYG{n}{modulated\PYGZus{}signal}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{message\PYGZus{}signal}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{.*}\PYG{+w}{ }\PYG{n}{carrier\PYGZus{}signal}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{} Demodulate the signal}
+\PYG{n}{demodulated\PYGZus{}signal}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{modulated\PYGZus{}signal}\PYG{+w}{ }\PYG{o}{.*}\PYG{+w}{ }\PYG{n}{carrier\PYGZus{}signal}\PYG{p}{;}
+\PYG{p}{[}\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{butter}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{fc}\PYG{o}{/}\PYG{p}{(}\PYG{n}{Fs}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{));}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Design a low\PYGZhy{}pass filter}
+\PYG{n}{filtered\PYGZus{}signal}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{filter}\PYG{p}{(}\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{demodulated\PYGZus{}signal}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{} Plot the signals}
+\PYG{n+nb}{figure}\PYG{p}{;}
+\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{message\PYGZus{}signal}\PYG{p}{);}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Message Signal\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Time (s)\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Amplitude\PYGZsq{}}\PYG{p}{);}
+
+\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{carrier\PYGZus{}signal}\PYG{p}{);}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Carrier Signal\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Time (s)\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Amplitude\PYGZsq{}}\PYG{p}{);}
+
+\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{);}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{modulated\PYGZus{}signal}\PYG{p}{);}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}AM Modulated Signal\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Time (s)\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Amplitude\PYGZsq{}}\PYG{p}{);}
+
+\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{);}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{filtered\PYGZus{}signal}\PYG{p}{);}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Demodulated Signal\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Time (s)\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Amplitude\PYGZsq{}}\PYG{p}{);}
+\end{Verbatim}
