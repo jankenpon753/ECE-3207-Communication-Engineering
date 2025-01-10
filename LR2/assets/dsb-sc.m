@@ -4,6 +4,7 @@ t = 0:1/Fs:0.01; % Time vector
 
 % Create message signal
 Am = 1.88; % Amplitude of message signal
+% Am = 0.9; % Amplitude of message signal
 fm = 1750; % Frequency of message signal
 message_signal = Am * sin(2 * pi * fm * t);
 

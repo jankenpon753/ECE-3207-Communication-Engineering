@@ -16,7 +16,7 @@
 
 % \usepackage{lipsum}
 
-\title{Study of Amplitude \& DSB\-SC-SC Modulation \& Demodulation}
+\title{Study of Amplitude \& DSB-SC Modulation \& Demodulation}
 \author{}
 \date{}
 
@@ -36,64 +36,51 @@
 \addcontentsline{toc}{section}{Theory}
 Amplitude Modulation (AM) is a modulation technique used in electronic communication, most commonly for transmitting information via a radio carrier wave. In AM, the amplitude of the carrier signal is varied in proportion to that of the message signal, such as an audio signal. This technique is used in a variety of applications, including broadcasting and two-way radio communication \cite{haykin2008communication}.
 \\\\
-Double Sideband Suppressed Carrier (DSB\-SC-SC) is a type of amplitude modulation that suppresses the carrier frequency, leaving only the upper and lower sidebands. This results in a more power-efficient transmission since the carrier does not need to be transmitted. DSB\-SC-SC is used in applications where bandwidth efficiency is crucial, such as in certain types of radio communication systems \cite{proakis2007digital}.
+Double Sideband Suppressed Carrier (DSB-SC) is a type of amplitude modulation that suppresses the carrier frequency, leaving only the upper and lower sidebands. This results in a more power-efficient transmission since the carrier does not need to be transmitted. DSB-SC is used in applications where bandwidth efficiency is crucial, such as in certain types of radio communication systems \cite{proakis2007digital}.
 \\\\
-In this experiment, we will study the principles of AM and DSB\-SC-SC modulation and demodulation. We will generate AM and DSB\-SC-SC signals, observe their spectra, and demodulate them to recover the original message signal. The experiment will help us understand the advantages and disadvantages of each modulation technique and their practical applications.
+In this experiment, the principles of AM and DSB-SC modulation and demodulation are studied. AM and DSB-SC signals are generated, their spectra are observed, and they are demodulated to recover the original message signal. This experiment helps in understanding the advantages and disadvantages of each modulation technique and their practical applications.
 
 \subsection*{AM Modulation}
 AM modulation involves varying the amplitude of a high-frequency carrier signal in accordance with the instantaneous amplitude of the message signal. The mathematical representation of an AM signal is given by:
 \[
-    s(t) = [A + m(t)] \cos(2 \pi f_c t)
+    s(t) = A\textsubscript{c}[1 + m(t)] \cos(2 \pi f_c t)
 \]
 where \(A\) is the carrier amplitude, \(m(t)\) is the message signal, and \(f_c\) is the carrier frequency.
 
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.8\textwidth]{am_modulation.png}
-    \caption{AM Modulation}
-    \label{fig:am_modulation}
-\end{figure}
-
-\subsection*{DSB\-SC-SC Modulation}
-DSB\-SC-SC modulation is achieved by multiplying the message signal with the carrier signal. The mathematical representation of a DSB\-SC-SC signal is:
+\subsection*{DSB-SC Modulation}
+DSB-SC modulation is achieved by multiplying the message signal with the carrier signal. The mathematical representation of a DSB-SC signal is:
 \[
     s(t) = m(t) \cos(2 \pi f_c t)
 \]
 This results in a signal that contains only the sidebands, with the carrier suppressed.
 
-\begin{figure}[H]
-    \centering
-    % \includegraphics[width=0.8\textwidth]{dsb_sc_modulation.png}
-    \caption{DSB\-SC-SC Modulation}
-    \label{fig:dsb_sc_modulation}
-\end{figure}
-
 \subsection*{Demodulation}
-Demodulation is the process of extracting the original message signal from the modulated carrier. For AM signals, this can be achieved using an envelope detector. For DSB\-SC-SC signals, coherent detection is required, which involves mixing the received signal with a locally generated carrier signal that is synchronized in frequency and phase with the original carrier.
+Demodulation is the process of extracting the original message signal from the modulated carrier. For AM signals, this can be achieved using an envelope detector. For DSB-SC signals, coherent detection is required, which involves mixing the received signal with a locally generated carrier signal that is synchronized in frequency and phase with the original carrier.
 
 \section*{Required Apparatus}
 \addcontentsline{toc}{section}{Required Apparatus}
 \begin{itemize}
-    \item ANALOGUE SIGNAL PROCESSING DL 3155M60R
+    \item AM/SSB/DSB-SC Board (ACT-02 AM DSB-SC/SSB Kit)
+    \item Frequency Generator
     \item Oscilloscope
     \item Connecting Wires
 \end{itemize}
 
 \section*{Block Diagram}
 \addcontentsline{toc}{section}{Block Diagram}
-\subsection*{AM and DSB\-SC-SC Modulation Block Diagram}
+\subsection*{AM and DSB-SC Modulation Block Diagram}
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.8\textwidth]{modulation_block_diagram.png}
-    \caption{Block Diagram of AM and DSB\-SC-SC Modulation}
+    \includegraphics[width=0.8\textwidth]{bm.png}
+    \caption{Block Diagram of AM and DSB-SC Modulation}
     \label{fig:modulation_block_diagram}
 \end{figure}
 
-\subsection*{AM and DSB\-SC-SC Modulation and Demodulation Block Diagram}
+\subsection*{AM and DSB-SC Modulation and Demodulation Block Diagram}
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.8\textwidth]{modulation_demodulation_block_diagram.png}
-    \caption{Block Diagram of AM and DSB\-SC-SC Modulation and Demodulation}
+    \includegraphics[width=\textwidth]{bmbm.png}
+    \caption{Block Diagram of AM and DSB-SC Modulation and Demodulation}
     \label{fig:modulation_demodulation_block_diagram}
 \end{figure}
 
@@ -101,10 +88,10 @@ Demodulation is the process of extracting the original message signal from the m
 \addcontentsline{toc}{section}{Procedure}
 \begin{enumerate}
     \item A function generator was used to generate two signals: a lower frequency message signal and a higher frequency carrier signal.
-    \item The AM/SSB/DSBSC board (ACT-02 AM DSB\-SC-SC/SSB Kit) was used, specifically the balanced modulator portion of the board for the first experiment.
+    \item The AM/SSB/DSB-SC board (ACT-02 AM DSB-SC/SSB Kit) was used, specifically the balanced modulator portion of the board for the first experiment.
     \item The message signal was passed to the balanced modulator, and the waveshapes of the message, carrier, and modulated signals were observed.
-    \item By adjusting the knob, AM and DSB\-SC-SC modulation were performed. Under, over, and 100\% modulation were observed for AM modulation. For DSB\-SC-SC, the message amplitude was varied to observe cases similar to AM under or over modulation.
-    \item Another balanced modulator was used to pass the modulated signal through, and the output was then passed through a low pass filter to recover the original message signal for both AM and DSB\-SC-SC.
+    \item By adjusting the carrier null knob, AM and DSB-SC modulation were performed. Under, over, and 100\% modulation were observed for AM modulation. For DSB-SC, the message amplitude was varied to observe cases similar to AM under or over modulation.
+    \item Another balanced modulator was used to pass the modulated signal through, and the output was then passed through a low pass filter to recover the original message signal for both AM and DSB-SC.
     \item The waveforms were observed on the oscilloscope at each step.
 \end{enumerate}
 
@@ -176,9 +163,9 @@ The following Matlab code simulates the generation, modulation, and demodulation
 
 \inputminted[linenos,breaklines,breakanywhere]{matlab}{./assets/am.m}
 
-\subsection*{Code (DSB\-SC-SC):}
-\addcontentsline{toc}{subsection}{Code (DSB\-SC-SC)}
-The following Matlab code simulates the generation, modulation, and demodulation of an analog signal using Double Sideband Suppressed Carrier (DSB\-SC-SC) modulation.
+\subsection*{Code (DSB-SC):}
+\addcontentsline{toc}{subsection}{Code (DSB-SC)}
+The following Matlab code simulates the generation, modulation, and demodulation of an analog signal using Double Sideband Suppressed Carrier (DSB-SC) modulation.
 
 \inputminted[linenos,breaklines,breakanywhere]{matlab}{./assets/dsb-sc.m}
 
@@ -195,22 +182,23 @@ The following Matlab code simulates the generation, modulation, and demodulation
 
 \section*{Discussion}
 \addcontentsline{toc}{section}{Discussion}
-In this experiment, we explored the principles of Amplitude Modulation (AM) and Double Sideband Suppressed Carrier (DSB-SC) modulation and demodulation. The experimental data and Matlab simulations provided valuable insights into the behavior of these modulation techniques under different conditions.
+In this experiment, the principles of Amplitude Modulation (AM) and Double Sideband Suppressed Carrier (DSB-SC) modulation and demodulation were explored. Experimental data and Matlab simulations provided insights into these modulation techniques under various conditions.
 \\\\
-From the experimental data, we observed the following:
-- For AM under modulation, the modulation index was calculated to be approximately 0.668. This indicates that the message signal's amplitude was less than the carrier amplitude, resulting in a modulated signal that did not fully utilize the carrier's amplitude range.
-- For AM 100\% modulation, the modulation index was 1, indicating that the message signal's amplitude was equal to the carrier amplitude. This resulted in a modulated signal that fully utilized the carrier's amplitude range without distortion.
-- For AM over modulation, the modulation index was calculated to be approximately 2.67. This indicates that the message signal's amplitude exceeded the carrier amplitude, resulting in a modulated signal with significant distortion, as observed in the waveforms.
+From the experimental data:
+\begin{itemize}
+    \item For AM under modulation, the modulation index was approximately 0.668, indicating that the message signal's amplitude was less than the carrier's, resulting in a modulated signal with less variation in amplitude.
+    \item For AM 100\% modulation, the modulation index was 1, showing that the message signal's amplitude equaled the carrier's, resulting in a modulated signal with maximum amplitude variation without distortion.
+    \item For AM over modulation, the modulation index was about 2.67, indicating that the message signal's amplitude exceeded the carrier's, resulting in significant distortion and envelope inversion in the modulated signal.
+\end{itemize}
+Matlab simulations supported these findings, visually representing the carrier, message, modulated, and demodulated signals for each modulation type. The effects of under, 100\%, and over modulation on the AM signal and the successful demodulation of the original message signal were demonstrated.
 \\\\
-The Matlab simulations corroborated these findings by providing visual representations of the carrier, message, modulated, and demodulated signals for each modulation type. The simulations demonstrated the effects of under, 100\%, and over modulation on the AM signal and the successful demodulation of the original message signal.
+For DSB-SC modulation, the carrier was suppressed, and only the sidebands were transmitted. Matlab simulations visualized the DSB-SC modulated signal and its demodulation, confirming the effectiveness of coherent detection in recovering the message.
 \\\\
-For DSB-SC modulation, the experimental data showed that the carrier was suppressed, and only the sidebands were transmitted. The Matlab simulations provided a clear visualization of the DSB-SC modulated signal and its demodulation process. The demodulated signals closely matched the original message signals, confirming the effectiveness of coherent detection in recovering the message from the DSB-SC modulated signal.
-\\\\
-Overall, this experiment highlighted the importance of the modulation index in AM and the efficiency of DSB-SC modulation in terms of power and bandwidth. The practical observations and simulations reinforced the theoretical concepts and provided a deeper understanding of these modulation techniques.
+This experiment highlighted the importance of the modulation index in AM and the efficiency of DSB-SC modulation in terms of power and bandwidth, reinforcing theoretical concepts through practical observations and simulations.
 
 \section*{Conclusion}
 \addcontentsline{toc}{section}{Conclusion}
-In conclusion, this experiment provided a comprehensive understanding of Amplitude Modulation (AM) and Double Sideband Suppressed Carrier (DSB-SC) modulation techniques. Through both experimental observations and Matlab simulations, we were able to analyze the effects of different modulation indices on AM signals and the efficiency of DSB-SC modulation in terms of power and bandwidth. The results demonstrated the importance of the modulation index in determining the quality of AM signals and highlighted the advantages of DSB-SC modulation for efficient communication. These findings are consistent with the theoretical concepts discussed in the literature \cite{haykin2008communication, proakis2007digital}. Overall, this experiment reinforced the practical applications and benefits of these modulation techniques in communication systems.
+In conclusion, a comprehensive understanding of Amplitude Modulation (AM) and Double Sideband Suppressed Carrier (DSB-SC) modulation techniques was provided by this experiment. Through both experimental observations and Matlab simulations, the effects of different modulation indices on AM signals and the efficiency of DSB-SC modulation in terms of power and bandwidth were analyzed. The results demonstrated the importance of the modulation index in determining the quality of AM signals and highlighted the advantages of DSB-SC modulation for efficient communication. These findings are consistent with the theoretical concepts discussed in the literature \cite{haykin2008communication, proakis2007digital}. Overall, the practical applications and benefits of these modulation techniques in communication systems were reinforced by this experiment.
 
 \bibliographystyle{IEEEtran}
 \renewcommand{\bibname}{References}
