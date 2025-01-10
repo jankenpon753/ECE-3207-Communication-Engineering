@@ -1,266 +1,220 @@
-% \documentclass[12pt]{article}
-% \usepackage[a4paper, total={6in, 9in}]{geometry}
-% \usepackage{graphicx}
-% \graphicspath{ {./images/output/} }
-% \usepackage{caption}
-% \usepackage[english]{babel}
-% \usepackage{titling}
-% \usepackage{float}
-% % \usepackage{amsmath}
-% % \usepackage{minted}
-% % \usepackage{multicol}
-% % \usepackage{array}
-% % \usepackage{setspace}
-% % \usepackage{placeins}
+\documentclass[12pt]{article}
+\usepackage[a4paper, total={6in, 9in}]{geometry}
+\usepackage{graphicx}
+\graphicspath{ {./images/output/} }
+\usepackage{caption}
+\usepackage[english]{babel}
+\usepackage{titling}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{minted}
+\usepackage{multicol}
+% \usepackage{array}
+% \usepackage{setspace}
+% \usepackage{placeins}
+\setlength{\parindent}{0pt}
 
-% % \usepackage{lipsum}
+% \usepackage{lipsum}
 
-% \title{Basics of Oscilloscope and Signal Generator}
-% \author{}
-% \date{}
+\title{Study of Amplitude \& DSB\-SC-SC Modulation \& Demodulation}
+\author{}
+\date{}
 
-% \pagenumbering{gobble}
-% \begin{document}
-% \input{kamal_sir_cover.tex}
+\pagenumbering{gobble}
+\begin{document}
+\input{kamal_sir_cover.tex}
 
-% \pagebreak
+\pagebreak
 
-% \tableofcontents
+\tableofcontents
 
-% \pagebreak
-% \pagenumbering{arabic}
-% \maketitle
+\pagebreak
+\pagenumbering{arabic}
+\maketitle
 
-% \section*{Theory}
-% \addcontentsline{toc}{section}{Theory}
+\section*{Theory}
+\addcontentsline{toc}{section}{Theory}
+Amplitude Modulation (AM) is a modulation technique used in electronic communication, most commonly for transmitting information via a radio carrier wave. In AM, the amplitude of the carrier signal is varied in proportion to that of the message signal, such as an audio signal. This technique is used in a variety of applications, including broadcasting and two-way radio communication \cite{haykin2008communication}.
+\\\\
+Double Sideband Suppressed Carrier (DSB\-SC-SC) is a type of amplitude modulation that suppresses the carrier frequency, leaving only the upper and lower sidebands. This results in a more power-efficient transmission since the carrier does not need to be transmitted. DSB\-SC-SC is used in applications where bandwidth efficiency is crucial, such as in certain types of radio communication systems \cite{proakis2007digital}.
+\\\\
+In this experiment, we will study the principles of AM and DSB\-SC-SC modulation and demodulation. We will generate AM and DSB\-SC-SC signals, observe their spectra, and demodulate them to recover the original message signal. The experiment will help us understand the advantages and disadvantages of each modulation technique and their practical applications.
 
-% \subsection*{Oscilloscope}
-% \addcontentsline{toc}{subsection}{Oscilloscope}
-% An oscilloscope is an electronic test instrument that allows observation of constantly varying signal voltages, typically as a two-dimensional plot of one or more signals as a function of time. It is widely used in electronics, telecommunications, and engineering to measure and visualize waveforms.\\\\
-% \textbf{Features of Oscilloscope:}
-% \begin{itemize}
-%     \item[] \textbf{Waveform Visualization:} Shows the shape of electrical signals such as voltage \& currents.
-%     \item[] \textbf{Measurement:} Provides tools to measure signal properties, such as amplitude, frequency, rise time, peak voltage, periodicity, and many other properties.
-%     \item[] \textbf{Trigger:} Allows stable visualization of repetitive signals by syncing the display to a specific point in the waveform.\\
-% \end{itemize}
-% \textbf{Types:}
-% \begin{itemize}
-%     \item[] \textbf{Analog Oscilloscope:} Displays signals in real time using cathode ray tubes.
-%     \item[] \textbf{Digital Oscilloscope:} Uses digital storage to record and display signals.
-%     \item[] \textbf{Mixed Signal Oscilloscope (MSO):} Combines analog and digital signal analysis.
-% \end{itemize}
+\subsection*{AM Modulation}
+AM modulation involves varying the amplitude of a high-frequency carrier signal in accordance with the instantaneous amplitude of the message signal. The mathematical representation of an AM signal is given by:
+\[
+    s(t) = [A + m(t)] \cos(2 \pi f_c t)
+\]
+where \(A\) is the carrier amplitude, \(m(t)\) is the message signal, and \(f_c\) is the carrier frequency.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{oscil.png}
-%     \caption{Oscilloscope}
-%     % \label{fig:Oscilloscope - Tektronix TBS1072B}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{am_modulation.png}
+    \caption{AM Modulation}
+    \label{fig:am_modulation}
+\end{figure}
 
-% \subsection*{Signal Generator}
-% \addcontentsline{toc}{subsection}{Signal Generator}
-% A signal generator is an electronic device that produces repeating or non-repeating waveforms. These waveforms can be of different shapes, such as sine waves, square waves, or triangular waves, and are used to test and troubleshoot electronic circuits. The properties of the waves generated by it can be tweaked to match the purpose.\\\\
-% \textbf{Key Features of a Signal Generator:}
-% \begin{itemize}
-%     \item \textbf{Wave Generation:} Creates various types of waveforms or signals.
-%     \item \textbf{Frequency Adjustment:} Frequency can be adjusted as required.
-%     \item \textbf{Modulation:} Modulate amplitude, frequency, or phase of signals.\\
-% \end{itemize}
-% \textbf{Types:}
-% \begin{itemize}
-%     \item \textbf{Function Generators:} Generate standard waveforms like sine, square, and triangle.
-%     \item \textbf{Arbitrary Waveform Generators:} Create user-defined waveforms.
-%     \item \textbf{RF Signal Generators:} Used for radio frequencies.
-% \end{itemize}
+\subsection*{DSB\-SC-SC Modulation}
+DSB\-SC-SC modulation is achieved by multiplying the message signal with the carrier signal. The mathematical representation of a DSB\-SC-SC signal is:
+\[
+    s(t) = m(t) \cos(2 \pi f_c t)
+\]
+This results in a signal that contains only the sidebands, with the carrier suppressed.
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{sigGen.png}
-%     \caption{Signal Generator}
-%     % \label{fig:Signal Generator - SG 1639A}
-% \end{figure}
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{dsb_sc_modulation.png}
+    \caption{DSB\-SC-SC Modulation}
+    \label{fig:dsb_sc_modulation}
+\end{figure}
 
+\subsection*{Demodulation}
+Demodulation is the process of extracting the original message signal from the modulated carrier. For AM signals, this can be achieved using an envelope detector. For DSB\-SC-SC signals, coherent detection is required, which involves mixing the received signal with a locally generated carrier signal that is synchronized in frequency and phase with the original carrier.
 
-% \section*{Required Tools \& Apparatus}
-% \addcontentsline{toc}{section}{Required Apparatus}
-% \begin{itemize}
-%     \item Oscilloscope - Tektronix TBS1072B
-%     \item Signal Generator - SG 1639A
-%     \item Probes
-%     \item Power Cables
-%     \item Latex
-% \end{itemize}
+\section*{Required Apparatus}
+\addcontentsline{toc}{section}{Required Apparatus}
+\begin{itemize}
+    \item ANALOGUE SIGNAL PROCESSING DL 3155M60R
+    \item Oscilloscope
+    \item Connecting Wires
+\end{itemize}
 
-% \section*{Procedure}
-% \addcontentsline{toc}{section}{Procedure}
-% \begin{enumerate}
-%     \item The oscilloscope \& the signal generator was turned on.
-%     \item The probes were connected to the oscilloscope and signal generator.
-%     \item The signal generator's probes were connected to the oscilloscope's.
-%     \item The oscilloscope was adjusted to display the signal from the signal generator.
-%     \item Using the modulation feature of the signal generator different types of signals was generated and the waves were observed using the oscilloscope.
-% \end{enumerate}
+\section*{Block Diagram}
+\addcontentsline{toc}{section}{Block Diagram}
+\subsection*{AM and DSB\-SC-SC Modulation Block Diagram}
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{modulation_block_diagram.png}
+    \caption{Block Diagram of AM and DSB\-SC-SC Modulation}
+    \label{fig:modulation_block_diagram}
+\end{figure}
 
-% \section*{Inputs and Outputs}
-% \addcontentsline{toc}{section}{Inputs and Outputs}
+\subsection*{AM and DSB\-SC-SC Modulation and Demodulation Block Diagram}
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{modulation_demodulation_block_diagram.png}
+    \caption{Block Diagram of AM and DSB\-SC-SC Modulation and Demodulation}
+    \label{fig:modulation_demodulation_block_diagram}
+\end{figure}
 
-% \subsection*{Oscilloscope}
-% \addcontentsline{toc}{subsection}{Oscilloscope}
+\section*{Procedure}
+\addcontentsline{toc}{section}{Procedure}
+\begin{enumerate}
+    \item A function generator was used to generate two signals: a lower frequency message signal and a higher frequency carrier signal.
+    \item The AM/SSB/DSBSC board (ACT-02 AM DSB\-SC-SC/SSB Kit) was used, specifically the balanced modulator portion of the board for the first experiment.
+    \item The message signal was passed to the balanced modulator, and the waveshapes of the message, carrier, and modulated signals were observed.
+    \item By adjusting the knob, AM and DSB\-SC-SC modulation were performed. Under, over, and 100\% modulation were observed for AM modulation. For DSB\-SC-SC, the message amplitude was varied to observe cases similar to AM under or over modulation.
+    \item Another balanced modulator was used to pass the modulated signal through, and the output was then passed through a low pass filter to recover the original message signal for both AM and DSB\-SC-SC.
+    \item The waveforms were observed on the oscilloscope at each step.
+\end{enumerate}
 
-% \subsubsection*{Display}
-% \begin{itemize}
-%     \item[] \textbf{Trigger Position Icon:} Indicates the trigger position on the screen, adjustable with the knobs.
-%     \item[] \textbf{Horizontal Position:} Indicates the position of the X-axis of the waveform(s).
-%     \item[] \textbf{Menu:} Shows various options to adjust the display for better understanding of the waveform(s).
-% \end{itemize}
+\section*{Experimental Data}
+\addcontentsline{toc}{section}{Experimental Data}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        \textbf{Modulation Type} & \textbf{A\textsubscript{m}} & \textbf{F\textsubscript{m}} & \textbf{A\textsubscript{c}} & \textbf{F\textsubscript{c}} & \textbf{A\textsubscript{max}} & \textbf{A\textsubscript{min}} \\
+        \hline
+        AM Under Modulation      & 0.4V                        & 1.75kHz                     & 2.2V                        & 298.8kHz                    & 2.52V                         & 0.5V                          \\
+        \hline
+        AM 100\% Modulation      & 0.54V                       & 1.762kHz                    & 2.22V                       & 301.5kHz                    & 2.54V                         & 0V                            \\
+        \hline
+        AM Over Modulation       & 0.9V                        & 1.75kHz                     & 2.24V                       & 300.32kHz                   & 2.64V                         & 1.2V                          \\
+        \hline
+        DSB-SC Modulation 1      & 0.9V                        & 1.75kHz                     & 2.28V                       & 300.3kHz                    & -                             & -                             \\
+        \hline
+        DSB-SC Modulation 1      & 1.88V                       & 1.75kHz                     & 2.28V                       & 300.3kHz                    & -                             & -                             \\
+        \hline
+    \end{tabular}
+    \caption{Experimental Data for Modulation Types}
+    \label{tab:experimental_data}
+\end{table}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{oscilOut.png}
-%     \caption{Display Interface of Oscilloscope}
-%     % \label{fig:Display Interface of Oscilloscope}
-% \end{figure}
+\section*{Calculations}
+\addcontentsline{toc}{section}{Calculations}
+The modulation index (\( \mu \)) for AM can be calculated using the formula:
+\[
+    \mu = \frac{A_{\text{max}} - A_{\text{min}}}{A_{\text{max}} + A_{\text{min}}}
+\]
 
-% \subsubsection*{Menu}
-% \begin{itemize}
-%     \item[] \textbf{Multipurpose Knob:} Can be turned to adjust cursor position
-%     \item[] \textbf{Help:} Highlights entries in the Index. Highlights links in a topic. Push to select the highlighted item.
-%     \item[] \textbf{Math:} Scroll to position and scale the Math waveform. Scroll and push to select the operation.
-%     \item[] \textbf{Measure:} Scroll to highlight and push to select the type of automatic measurement for each source and various properties of that source.
-%     \item[] \textbf{Save/Recall:} Scroll to highlight and push to select the action and file format. Scroll through the list of files. Pressing also saves current display screenshot to a externally connected device.
-%     \item[] \textbf{Utility:} Scroll to highlight and push to select miscellaneous menu items. Turn to set the backlight value.
-%     \item[] \textbf{Autoset:} Adjusts the current display and makes it so that its shows best.
-%     \item[] \textbf{Run/Stop:} Pressing freezes the current output.
-% \end{itemize}
+\subsection*{AM Under Modulation}
+Given:
+\[
+    A_{\text{max}} = 2.52V, \quad A_{\text{min}} = 0.5V
+\]
+\[
+    \mu = \frac{2.52 - 0.5}{2.52 + 0.5} = \frac{2.02}{3.02} \approx 0.668
+\]
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.4\textwidth]{oscilMenu.png}
-%     \caption{Menu of Oscilloscope}
-%     % \label{fig:Menu of Oscilloscope}
-% \end{figure}
+\subsection*{AM 100\% Modulation}
+Given:
+\[
+    A_{\text{max}} = 2.54V, \quad A_{\text{min}} = 0V
+\]
+\[
+    \mu = \frac{2.54 - 0}{2.54 + 0} = \frac{2.54}{2.54} = 1
+\]
 
-% \subsubsection*{Horizontal Control\cite{Theworki71:online}}
-% \begin{itemize}
-%     \item[] \textbf{Position:}  Positions a waveform horizontally.
-%     \item[] \textbf{Scale:} Selects horizontal scale factors like time.
-%     \item[] \textbf{Acquire:} Displays the acquisition mode: Sample, Peak Detect, or Average.
-% \end{itemize}
+\subsection*{AM Over Modulation}
+Given:
+\[
+    A_{\text{max}} = 2.64V, \quad A_{\text{min}} = 1.2V
+\]
+\[
+    \mu = \frac{2.64 - (-1.2)}{2.64 + (-1.2)} = \frac{3.84}{1.44} \approx 2.67
+\]
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.1\textwidth]{oscilHoriz.png}
-%     \caption{Horizontal Control of Oscilloscope}
-%     % \label{fig:Horizontal Control of Oscilloscope}
-% \end{figure}
+For DSB-SC modulation, the modulation index is not applicable as the carrier is suppressed.
 
-% \subsubsection*{Vertical Control\cite{Theworki71:online}}
-% \begin{itemize}
-%     \item[] \textbf{Position (1 \& 2):} Positions a waveform vertically.
-%     \item[] \textbf{Menu (1 \& 2):} Displays the Vertical menu selections and toggles the display of the channel waveform on and off.
-%     \item[] \textbf{Scale (1 \& 2):} Selects vertical scale factors such as amplitude.
-% \end{itemize}
+\section*{Matlab Simulation}
+\addcontentsline{toc}{section}{Matlab Simulation}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.3\textwidth]{oscilVert.png}
-%     \caption{Vertical Control of Oscilloscope}
-%     % \label{fig:Vertical Control of Oscilloscope}
-% \end{figure}
+\subsection*{Code (AM):}
+\addcontentsline{toc}{subsection}{Code (AM)}
+The following Matlab code simulates the generation, modulation, and demodulation of an analog signal using Amplitude Modulation (AM).
 
-% \subsubsection*{Trigger Control\cite{Theworki71:online}}
-% \begin{itemize}
-%     \item[] \textbf{Trigger Menu:}
-%           \begin{itemize}
-%               \item Pressing the button once will open the Trigger Menu.
-%               \item Holding the button for more than 1.5 seconds will switch to the trigger view, where the trigger waveform replaces the channel waveform. This view allows to observe how the trigger settings (e.g., coupling) impact the trigger signal.
-%               \item Releasing the button will return to the standard view and stop displaying the trigger waveform.
-%           \end{itemize}
-%     \item[] \textbf{Level:}
-%           \begin{itemize}
-%               \item When using Edge or Pulse triggers, the Level knob adjusts the amplitude level at which the signal must cross to capture a waveform.
-%               \item Pressing the knob sets the trigger level to the vertical midpoint between the peaks of the trigger signal (50\%).
-%           \end{itemize}
-%     \item[] \textbf{Force Trig:}
-%           \begin{itemize}
-%               \item Use the Force Trig button to manually acquire a waveform, regardless of whether the oscilloscope detects a trigger.
-%               \item This function is helpful for single sequence acquisitions and Normal trigger mode.
-%               \item In Auto trigger mode, the oscilloscope automatically forces triggers periodically if no trigger is detected.
-%           \end{itemize}
-% \end{itemize}
+\inputminted[linenos,breaklines,breakanywhere]{matlab}{./assets/am.m}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.1\textwidth]{oscilTrig.png}
-%     \caption{Trigger Control of Oscilloscope}
-%     % \label{fig:Trigger Control of Oscilloscope}
-% \end{figure}
+\subsection*{Code (DSB\-SC-SC):}
+\addcontentsline{toc}{subsection}{Code (DSB\-SC-SC)}
+The following Matlab code simulates the generation, modulation, and demodulation of an analog signal using Double Sideband Suppressed Carrier (DSB\-SC-SC) modulation.
 
-% \subsubsection*{Connectors}
-% \begin{itemize}
-%     \item[] \textbf{Blue Port:} Used to input one of the waveform signals for display.
-%     \item[] \textbf{Yellow Port:} Used to input the second waveform signal for display.
-%     \item[] \textbf{Ext Trig (External Trigger):} Provides a connection for an external trigger signal to synchronize waveform acquisition.
-% \end{itemize}
+\inputminted[linenos,breaklines,breakanywhere]{matlab}{./assets/dsb-sc.m}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.5\textwidth]{oscilProbes.png}
-%     \caption{Input Connectors of Oscilloscope}
-%     % \label{fig:Input Connectors of Oscilloscope}
-% \end{figure}
+\section*{Output}
+\addcontentsline{toc}{section}{Output}
 
-% \subsection*{Signal Generators}
-% \addcontentsline{toc}{subsection}{Signal Generators}
+\subsection*{Experimental Output}
+\addcontentsline{toc}{subsection}{Experimental Output}
+\input{outputExp.tex}
 
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{sigGen2.png}
-%     \caption{Signal Generator}
-%     % \label{fig:Signal Generator}
-% \end{figure}
+\subsection*{Matlab Simulation Output}
+\addcontentsline{toc}{subsection}{Matlab Output}
+\input{outputMatlab.tex}
 
-% \begin{enumerate}
-%     \item \textbf{Power:} Turns the device "ON" when the button is pressed
-%     \item \textbf{Frequency Adjust:} Adjusts the output frequency.
-%     \item \textbf{Select Switch (INT/EXT):} \cite{signal}Measures external (EXT) frequency when the button is pressed.
-%     \item \textbf{Attenuation (Input):} Reduces input signal by 10dB when pressed.
-%     \item \textbf{Input Socket:} \cite{signal}Socket for external (EXT) signal input.
-%     \item \textbf{SYMM. Switch:} Adjusts the waveform to be symmetrical when the switch is pulled out.
-%     \item \textbf{VCF Input Socket:} \cite{signal}Allows external signals to control the main output frequency.
-%     \item \textbf{DC Offset Switch:} \cite{signal}Adjusts the DC offset when the switch is pulled out.
-%     \item \textbf{TTL Output:} \cite{signal}Socket for TTL signal output.
-%     \item \textbf{Amplitude:}Adjusts the output signal's amplitude (inverts when the switch is pulled out).
-%     \item \textbf{Output Socket:} Socket for the main signal output.
-%     \item \textbf{Attenuation (Output):} Reduces output signal by 40dB when pressed.
-%     \item \textbf{Attenuation (Output):} Reduces output signal by 20dB when pressed.
-%     \item \textbf{Waveform Selector:} Selects the output waveform type.
-%     \item \textbf{Frequency Range:} Adjusts and selects the output frequency range.
-%     \item \textbf{Frequency Counter:} Displays the frequency of the output signal.
-% \end{enumerate}
+\section*{Discussion}
+\addcontentsline{toc}{section}{Discussion}
+In this experiment, we explored the principles of Amplitude Modulation (AM) and Double Sideband Suppressed Carrier (DSB-SC) modulation and demodulation. The experimental data and Matlab simulations provided valuable insights into the behavior of these modulation techniques under different conditions.
+\\\\
+From the experimental data, we observed the following:
+- For AM under modulation, the modulation index was calculated to be approximately 0.668. This indicates that the message signal's amplitude was less than the carrier amplitude, resulting in a modulated signal that did not fully utilize the carrier's amplitude range.
+- For AM 100\% modulation, the modulation index was 1, indicating that the message signal's amplitude was equal to the carrier amplitude. This resulted in a modulated signal that fully utilized the carrier's amplitude range without distortion.
+- For AM over modulation, the modulation index was calculated to be approximately 2.67. This indicates that the message signal's amplitude exceeded the carrier amplitude, resulting in a modulated signal with significant distortion, as observed in the waveforms.
+\\\\
+The Matlab simulations corroborated these findings by providing visual representations of the carrier, message, modulated, and demodulated signals for each modulation type. The simulations demonstrated the effects of under, 100\%, and over modulation on the AM signal and the successful demodulation of the original message signal.
+\\\\
+For DSB-SC modulation, the experimental data showed that the carrier was suppressed, and only the sidebands were transmitted. The Matlab simulations provided a clear visualization of the DSB-SC modulated signal and its demodulation process. The demodulated signals closely matched the original message signals, confirming the effectiveness of coherent detection in recovering the message from the DSB-SC modulated signal.
+\\\\
+Overall, this experiment highlighted the importance of the modulation index in AM and the efficiency of DSB-SC modulation in terms of power and bandwidth. The practical observations and simulations reinforced the theoretical concepts and provided a deeper understanding of these modulation techniques.
 
-% \section*{Discussion}
-% \addcontentsline{toc}{section}{Discussion}
-% In this experiment, we worked with two essential tools in electronics laboratories: the oscilloscope and the signal generator. The oscilloscope allows us to visualize electronic signals, while the signal generator produces a variety of signals at adjustable frequencies. Together, these devices play a critical role in testing and analyzing electronic circuits.\\\\
-% We gained hands-on experience by using these tools to observe and evaluate signals. Adjustments were made to both devices to see how changes in settings affected the signals. Additionally, we connected the signal generator to the oscilloscope to monitor the generated waveforms directly on the screen.\\\\
-% This practical session was highly beneficial, providing us with valuable experience in using these tools effectively. It demonstrated their importance in the field of electronics for testing, troubleshooting, and analyzing circuits.\\\\
-% In summary, the oscilloscope and signal generator are indispensable instruments in any electronics laboratory. The oscilloscope offers a detailed representation of signal characteristics, while the signal generator provides controlled test signals. By combining their functionalities, they allow engineers to create, measure, and analyze signals, ensuring that electronic devices and circuits perform as expected.
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+In conclusion, this experiment provided a comprehensive understanding of Amplitude Modulation (AM) and Double Sideband Suppressed Carrier (DSB-SC) modulation techniques. Through both experimental observations and Matlab simulations, we were able to analyze the effects of different modulation indices on AM signals and the efficiency of DSB-SC modulation in terms of power and bandwidth. The results demonstrated the importance of the modulation index in determining the quality of AM signals and highlighted the advantages of DSB-SC modulation for efficient communication. These findings are consistent with the theoretical concepts discussed in the literature \cite{haykin2008communication, proakis2007digital}. Overall, this experiment reinforced the practical applications and benefits of these modulation techniques in communication systems.
 
-% \section*{Precaution \& Conclusion}
-% \addcontentsline{toc}{section}{Precaution}
-% To ensure safe and effective use of the equipment, the following precautions were observed during the experiment:
-% \begin{itemize}
-%     \item Both the oscilloscope and signal generator were powered off when not in use to prevent potential damage.
-%     \item Probes and cables were connected or disconnected only when the devices were switched off to maintain safety and avoid electrical faults.
-%     \item Settings on the instruments were adjusted carefully to prevent any misconfigurations or damage to the devices.
-%     \item Only the provided, calibrated probes and cables were used to ensure accurate measurements.
-%     \item After completing the experiment, all equipment was returned to its designated safe storage location.\\\\
-% \end{itemize}
-% This experiment reinforced the critical role of the oscilloscope and signal generator in electronics. It highlighted their complementary functionalities, with the oscilloscope visualizing signal behavior and the signal generator providing precise, controllable inputs for testing. Through this exercise, we developed a deeper understanding of how these tools are used in real-world applications to diagnose, validate, and optimize electronic circuits. Moreover, adhering to proper precautions ensured the longevity of the equipment and the safety of the users, emphasizing the importance of best practices in a laboratory setting.
+\bibliographystyle{IEEEtran}
+\renewcommand{\bibname}{References}
+\addcontentsline{toc}{section}{References}
+\bibliography{ref}
 
-% \bibliographystyle{IEEEtran}
-% \renewcommand{\bibname}{References}
-% \addcontentsline{toc}{section}{References}
-% \bibliography{ref}
-
-% \end{document}
+\end{document}
