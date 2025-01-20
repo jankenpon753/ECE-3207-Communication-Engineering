@@ -34,11 +34,11 @@
 
 \section*{Theory}
 \addcontentsline{toc}{section}{Theory}
-Amplitude Modulation (AM) is a modulation technique used in electronic communication, most commonly for transmitting information via a radio carrier wave. In AM, the amplitude of the carrier signal is varied in proportion to that of the message signal, such as an audio signal. This technique is used in a variety of applications, including broadcasting and two-way radio communication \cite{haykin2008communication}.
+Amplitude Modulation (AM) varies the carrier signal's amplitude in proportion to the message signal, commonly used in radio broadcasting \cite{haykin2008communication}.
 \\\\
-Double Sideband Suppressed Carrier (DSB-SC) is a type of amplitude modulation that suppresses the carrier frequency, leaving only the upper and lower sidebands. This results in a more power-efficient transmission since the carrier does not need to be transmitted. DSB-SC is used in applications where bandwidth efficiency is crucial, such as in certain types of radio communication systems \cite{proakis2007digital}.
+Double Sideband Suppressed Carrier (DSB-SC) suppresses the carrier, transmitting only sidebands, making it more power-efficient and suitable for bandwidth-critical applications \cite{proakis2007digital}.
 \\\\
-In this experiment, the principles of AM and DSB-SC modulation and demodulation are studied. AM and DSB-SC signals are generated, their spectra are observed, and they are demodulated to recover the original message signal. This experiment helps in understanding the advantages and disadvantages of each modulation technique and their practical applications.
+This experiment explores AM and DSB-SC modulation and demodulation, observing their spectra and recovering the original message signal, highlighting their practical applications and efficiency.
 
 \subsection*{AM Modulation}
 AM modulation involves varying the amplitude of a high-frequency carrier signal in accordance with the instantaneous amplitude of the message signal. The mathematical representation of an AM signal is given by:
@@ -55,7 +55,7 @@ DSB-SC modulation is achieved by multiplying the message signal with the carrier
 This results in a signal that contains only the sidebands, with the carrier suppressed.
 
 \subsection*{Demodulation}
-Demodulation is the process of extracting the original message signal from the modulated carrier. For AM signals, this can be achieved using an envelope detector. For DSB-SC signals, coherent detection is required, which involves mixing the received signal with a locally generated carrier signal that is synchronized in frequency and phase with the original carrier.
+Demodulation extracts the original message signal from the modulated carrier. For AM signals, this is done using an envelope detector. For DSB-SC signals, coherent detection is used, involving mixing the received signal with a synchronized local carrier.
 
 \section*{Required Apparatus}
 \addcontentsline{toc}{section}{Required Apparatus}
@@ -72,14 +72,14 @@ Demodulation is the process of extracting the original message signal from the m
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{bm.png}
-    \caption{Block Diagram of AM and DSB-SC Modulation}
+    \caption{Block Diagram of AM and DSB-SC Modulation (Balanced Modulator)}
     \label{fig:modulation_block_diagram}
 \end{figure}
 
 \subsection*{AM and DSB-SC Modulation and Demodulation Block Diagram}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{bmbm.png}
+    \includegraphics[width=\textwidth]{bmb.png}
     \caption{Block Diagram of AM and DSB-SC Modulation and Demodulation}
     \label{fig:modulation_demodulation_block_diagram}
 \end{figure}
@@ -87,12 +87,12 @@ Demodulation is the process of extracting the original message signal from the m
 \section*{Procedure}
 \addcontentsline{toc}{section}{Procedure}
 \begin{enumerate}
-    \item A function generator was used to generate two signals: a lower frequency message signal and a higher frequency carrier signal.
-    \item The AM/SSB/DSB-SC board (ACT-02 AM DSB-SC/SSB Kit) was used, specifically the balanced modulator portion of the board for the first experiment.
-    \item The message signal was passed to the balanced modulator, and the waveshapes of the message, carrier, and modulated signals were observed.
-    \item By adjusting the carrier null knob, AM and DSB-SC modulation were performed. Under, over, and 100\% modulation were observed for AM modulation. For DSB-SC, the message amplitude was varied to observe cases similar to AM under or over modulation.
-    \item Another balanced modulator was used to pass the modulated signal through, and the output was then passed through a low pass filter to recover the original message signal for both AM and DSB-SC.
-    \item The waveforms were observed on the oscilloscope at each step.
+    \item Generate a lower frequency message signal and a higher frequency carrier signal using a function generator.
+    \item Use the balanced modulator on the AM/SSB/DSB-SC board (ACT-02 AM DSB-SC/SSB Kit) for modulation.
+    \item Pass the message signal to the balanced modulator and observe the message, carrier, and modulated signals.
+    \item Adjust the carrier null knob to perform AM and DSB-SC modulation, observing under, over, and 100\% modulation for AM.
+    \item Use another balanced modulator and a low pass filter to demodulate and recover the original message signal for both AM and DSB-SC.
+    \item Observe waveforms on the oscilloscope at each step.
 \end{enumerate}
 
 \section*{Experimental Data}
