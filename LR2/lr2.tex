@@ -16,7 +16,7 @@
 
 % \usepackage{lipsum}
 
-\title{Study of Amplitude \& DSB-SC Modulation \& Demodulation}
+\title{Determination of Modulation Index of FM Wave}
 \author{}
 \date{}
 
@@ -34,33 +34,11 @@
 
 \section*{Theory}
 \addcontentsline{toc}{section}{Theory}
-Amplitude Modulation (AM) varies the carrier signal's amplitude in proportion to the message signal, commonly used in radio broadcasting \cite{haykin2008communication}.
-\\\\
-Double Sideband Suppressed Carrier (DSB-SC) suppresses the carrier, transmitting only sidebands, making it more power-efficient and suitable for bandwidth-critical applications \cite{proakis2007digital}.
-\\\\
-This experiment explores AM and DSB-SC modulation and demodulation, observing their spectra and recovering the original message signal, highlighting their practical applications and efficiency.
-
-\subsection*{AM Modulation}
-AM modulation involves varying the amplitude of a high-frequency carrier signal in accordance with the instantaneous amplitude of the message signal. The mathematical representation of an AM signal is given by:
-\[
-    s(t) = A\textsubscript{c}[1 + m(t)] \cos(2 \pi f_c t)
-\]
-where \(A\) is the carrier amplitude, \(m(t)\) is the message signal, and \(f_c\) is the carrier frequency.
-
-\subsection*{DSB-SC Modulation}
-DSB-SC modulation is achieved by multiplying the message signal with the carrier signal. The mathematical representation of a DSB-SC signal is:
-\[
-    s(t) = m(t) \cos(2 \pi f_c t)
-\]
-This results in a signal that contains only the sidebands, with the carrier suppressed.
-
-\subsection*{Demodulation}
-Demodulation extracts the original message signal from the modulated carrier. For AM signals, this is done using an envelope detector. For DSB-SC signals, coherent detection is used, involving mixing the received signal with a synchronized local carrier.
 
 \section*{Required Apparatus}
 \addcontentsline{toc}{section}{Required Apparatus}
 \begin{itemize}
-    \item AM/SSB/DSB-SC Board (ACT-02 AM DSB-SC/SSB Kit)
+    \item ANALOGUE SIGNAL TRANSMISSION DL 3155M60
     \item Frequency Generator
     \item Oscilloscope
     \item Connecting Wires
