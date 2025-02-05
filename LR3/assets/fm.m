@@ -50,3 +50,13 @@ plot(t, y(1:length(t)));
 title('Demodulated Signal');
 xlabel('Time (s)');
 ylabel('Amplitude');
+% Zoomed-in view of FM Modulated Signal to show frequency variations
+zoom_factor = 10;  % Factor to zoom in
+zoom_t = t(1:fs/zoom_factor);  % Zoomed-in time vector
+zoom_s = s(1:fs/zoom_factor);  % Zoomed-in FM signal
+
+figure;
+plot(zoom_t, zoom_s);
+title('Zoomed-in FM Modulated Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');

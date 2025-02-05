@@ -38,42 +38,42 @@
 
 \section*{Theory}
 \addcontentsline{toc}{section}{Theory}
-Frequency Modulation (FM) encodes information by varying the instantaneous frequency of a carrier wave, unlike Amplitude Modulation (AM) which varies amplitude. This makes FM more resistant to noise and interference.
+Frequency Modulation (FM) encodes information by varying the instantaneous frequency of a carrier wave, making it more resistant to noise than Amplitude Modulation (AM).
 
-The instantaneous frequency of an FM signal is:
+The message signal:
 \[
-    f(t) = f_c + \Delta f \cdot \sin(2 \pi f_m t)
+    m(t) = A_m \cos(2 \pi f_m t)
 \]
-where \( f_c \) is the carrier frequency, \( \Delta f \) is the frequency deviation, and \( f_m \) is the modulating signal frequency.
 
-The modulation index (\( \beta \)) is:
+The carrier signal:
 \[
-    \beta = \frac{\Delta f}{f_m}
+    c(t) = A_c \cos(2 \pi f_c t)
+\]
+
+The FM modulated signal:
+\[
+    s(t) = A_c \cos\left(2 \pi f_c t + \beta \sin(2 \pi f_m t)\right)
+\]
+where \( \beta = \frac{\Delta f}{f_m} \).
+
+The demodulated signal:
+\[
+    V_{\text{0}}(t) = \frac{f_{\text{inst}}(t) - f_c}{\Delta f}
 \]
 
 To determine \( \Delta f \):
 \begin{enumerate}
-    \item \textbf{Observe the Modulated Signal:}
-          \begin{itemize}
-              \item Connect the FM modulator output to the oscilloscope.
-              \item Display the frequency spectrum.
-          \end{itemize}
-    \item \textbf{Identify Frequencies:}
-          \begin{itemize}
-              \item Measure the maximum (\( f_{\text{max}} \)) and minimum (\( f_{\text{min}} \)) frequencies.
-          \end{itemize}
-    \item \textbf{Calculate Deviation:}
-          \begin{itemize}
-              \item Use \( \Delta f = \frac{f_{\text{max}} - f_{\text{min}}}{2} \).
-          \end{itemize}
+    \item Observe the modulated signal on an oscilloscope.
+    \item Measure the maximum (\( f_{\text{max}} \)) and minimum (\( f_{\text{min}} \)) frequencies.
+    \item Calculate \( \Delta f = \frac{f_{\text{max}} - f_{\text{min}}}{2} \).
 \end{enumerate}
 
-The bandwidth (\( B \)) of an FM signal, according to Carson's rule, is:
+The bandwidth (\( B \)) of an FM signal, according to Carson's rule:
 \[
     B \approx 2 (\Delta f + f_m) = 2 f_m (\beta + 1)
 \]
 
-FM is widely used in radio broadcasting, TV sound transmission, and two-way radio communication due to its noise immunity and efficient bandwidth use \cite{haykin2008communication, proakis2007digital}.
+FM is widely used in radio broadcasting and two-way radio communication due to its noise immunity and efficient bandwidth use \cite{haykin2008communication, proakis2007digital}.
 
 \section*{Required Apparatus}
 \addcontentsline{toc}{section}{Required Apparatus}
@@ -89,7 +89,7 @@ FM is widely used in radio broadcasting, TV sound transmission, and two-way radi
 \subsection*{FM Modulation and Demodulation}
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=0.8\textwidth]{bm.png}
+    \includegraphics[width=\textwidth]{block.png}
     \caption{Block Diagram of FM Modulation and Demodulation}
     \label{fig:fm}
 \end{figure}
@@ -244,7 +244,7 @@ The modulation index (\( \beta \)) and bandwidth (\( B \)) for each reading are 
 
 \subsection*{Matlab Simulation Output}
 \addcontentsline{toc}{subsection}{Matlab Output}
-% \input{outputMatlab.tex}
+\input{outputMatlab.tex}
 
 \section*{Discussion and Conclusion}
 \addcontentsline{toc}{section}{Discussion and Conclusion}
