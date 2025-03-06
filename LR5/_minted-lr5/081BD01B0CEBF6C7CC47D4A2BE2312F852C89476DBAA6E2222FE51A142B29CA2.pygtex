@@ -1,0 +1,46 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c}{\PYGZpc{} Parameters}
+\PYG{n}{fs}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{10000}\PYG{p}{;}\PYG{+w}{          }\PYG{c}{\PYGZpc{} Sampling frequency}
+\PYG{n}{t}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{:}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{fs}\PYG{p}{:}\PYG{l+m+mf}{0.01}\PYG{p}{;}\PYG{+w}{     }\PYG{c}{\PYGZpc{} Time vector for 10 ms}
+\PYG{n}{f}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1000}\PYG{p}{;}\PYG{+w}{            }\PYG{c}{\PYGZpc{} Frequency of input signal}
+\PYG{n}{A}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{               }\PYG{c}{\PYGZpc{} Amplitude of input signal}
+\PYG{n}{n\PYGZus{}bits}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{8}\PYG{p}{;}\PYG{+w}{          }\PYG{c}{\PYGZpc{} Number of bits for quantization}
+
+\PYG{c}{\PYGZpc{} Generate input signal}
+\PYG{n}{input\PYGZus{}signal}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{A}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{sin}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{pi}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{f}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{} Quantization}
+\PYG{n}{L}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{o}{\PYGZca{}}\PYG{n}{n\PYGZus{}bits}\PYG{p}{;}\PYG{+w}{        }\PYG{c}{\PYGZpc{} Number of quantization levels}
+\PYG{n}{q\PYGZus{}step}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{A}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{L}\PYG{p}{;}\PYG{+w}{ }\PYG{c}{\PYGZpc{} Quantization step size}
+\PYG{n}{quantized\PYGZus{}signal}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n+nb}{round}\PYG{p}{(}\PYG{n}{input\PYGZus{}signal}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{q\PYGZus{}step}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q\PYGZus{}step}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{} PCM Encoding}
+\PYG{n}{pcm\PYGZus{}encoded}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{n}{de2bi}\PYG{p}{((}\PYG{n}{quantized\PYGZus{}signal}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{q\PYGZus{}step}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{L}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{n\PYGZus{}bits}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}left\PYGZhy{}msb\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{} PCM Decoding}
+\PYG{n}{decoded\PYGZus{}signal}\PYG{+w}{ }\PYG{p}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{bi2de}\PYG{p}{(}\PYG{n}{pcm\PYGZus{}encoded}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}left\PYGZhy{}msb\PYGZsq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{L}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q\PYGZus{}step}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{} Plotting}
+\PYG{n+nb}{figure}\PYG{p}{;}
+
+\PYG{c}{\PYGZpc{} Plot input signal}
+\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{input\PYGZus{}signal}\PYG{p}{);}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Input Signal\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Time (s)\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Amplitude\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{} Plot PCM modulated signal}
+\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n+nb}{stairs}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{quantized\PYGZus{}signal}\PYG{p}{);}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}PCM Modulated Signal\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Time (s)\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Amplitude\PYGZsq{}}\PYG{p}{);}
+
+\PYG{c}{\PYGZpc{} Plot demodulated signal}
+\PYG{n+nb}{subplot}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{);}
+\PYG{n+nb}{plot}\PYG{p}{(}\PYG{n}{t}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{decoded\PYGZus{}signal}\PYG{p}{);}
+\PYG{n+nb}{title}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Demodulated Signal\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{xlabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Time (s)\PYGZsq{}}\PYG{p}{);}
+\PYG{n+nb}{ylabel}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}Amplitude\PYGZsq{}}\PYG{p}{);}
+\end{Verbatim}
