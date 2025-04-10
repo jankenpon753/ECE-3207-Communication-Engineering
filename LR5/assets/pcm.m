@@ -24,21 +24,21 @@ figure;
 
 % Plot input signal
 subplot(3,1,1);
-plot(t, input_signal);
+plot(t, input_signal, 'LineWidth', 1.5);
 title('Input Signal');
 xlabel('Time (s)');
 ylabel('Amplitude');
 
 % Plot PCM modulated signal
 subplot(3,1,2);
-stairs(t, quantized_signal);
+stairs(t, quantized_signal, 'LineWidth', 1.5);
 title('PCM Modulated Signal');
 xlabel('Time (s)');
 ylabel('Amplitude');
 
 % Plot demodulated signal
 subplot(3,1,3);
-plot(t, decoded_signal);
+plot(t, decoded_signal, 'LineWidth', 1.5);
 title('Demodulated Signal');
 xlabel('Time (s)');
 ylabel('Amplitude');
