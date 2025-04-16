@@ -38,10 +38,10 @@
 
 \section*{Theory}
 \addcontentsline{toc}{section}{Theory}
-Digital modulation transforms digital symbols into waveforms compatible with the transmission medium by varying the carrier signal's amplitude, frequency, or phase according to the digital data. The goal is to efficiently transmit data while maintaining signal integrity and minimizing errors. Common types include Amplitude Shift Keying (ASK), Frequency Shift Keying (FSK), and Phase Shift Keying (PSK) \cite{proakis2007digital}.
+Digital modulation encodes digital data into waveforms by varying the carrier signal's amplitude, frequency, or phase. Common types include ASK, FSK, and PSK \cite{proakis2007digital}.
 
 \subsection*{Amplitude Shift Keying (ASK)}
-Amplitude Shift Keying (ASK) is a type of digital modulation where the amplitude of the carrier signal is varied in accordance with the binary data. The general form of an ASK signal is:
+Amplitude Shift Keying (ASK) varies the carrier signal's amplitude based on binary data:
 \[
     s(t) =
     \begin{cases}
@@ -49,10 +49,10 @@ Amplitude Shift Keying (ASK) is a type of digital modulation where the amplitude
         0                   & \text{if } m(t) = 0
     \end{cases}
 \]
-where \( A \) is the amplitude, \( f_c \) is the carrier frequency, and \( m(t) \) is the message signal \cite{sklar2001digital}.
+where \( A \) is the amplitude, \( f_c \) the carrier frequency, and \( m(t) \) the message signal \cite{sklar2001digital}.
 
 \subsection*{Frequency Shift Keying (FSK)}
-Frequency Shift Keying (FSK) is a type of digital modulation where the frequency of the carrier signal is varied according to the binary data. The general form of an FSK signal is:
+Frequency Shift Keying (FSK) varies the carrier signal's frequency based on binary data:
 \[
     s(t) =
     \begin{cases}
@@ -60,22 +60,19 @@ Frequency Shift Keying (FSK) is a type of digital modulation where the frequency
         A \cos(2 \pi f_2 t) & \text{if } m(t) = 0
     \end{cases}
 \]
-where \( A \) is the amplitude, \( f_1 \) and \( f_2 \) are the frequencies for binary 1 and 0 respectively, and \( m(t) \) is the message signal \cite{haykin2001communication}.
+where \( f_1 \) and \( f_2 \) are the frequencies for binary 1 and 0 \cite{haykin2001communication}.
 
 \subsection*{Phase Shift Keying (PSK)}
-Phase Shift Keying (PSK) is a type of digital modulation where the phase of the carrier signal is varied according to the binary data. The general form of a PSK signal is:
+Phase Shift Keying (PSK) varies the carrier signal's phase based on binary data:
 \[
-    s(t) = A \cos(2 \pi f_c t + \theta)
-\]
-where \( A \) is the amplitude, \( f_c \) is the carrier frequency, and \( \theta \) is the phase shift. For Binary PSK (BPSK), the phase shift \( \theta \) is:
-\[
+    s(t) = A \cos(2 \pi f_c t + \theta), \quad
     \theta =
     \begin{cases}
         0   & \text{if } m(t) = 1 \\
         \pi & \text{if } m(t) = 0
     \end{cases}
 \]
-where \( m(t) \) is the message signal \cite{lathi2009modern}.
+where \( A \) is the amplitude, \( f_c \) the carrier frequency, and \( m(t) \) the message signal \cite{lathi2009modern}.
 
 
 \section*{Required Apparatus}
@@ -92,28 +89,46 @@ where \( m(t) \) is the message signal \cite{lathi2009modern}.
 
 \section*{Diagrams}
 \addcontentsline{toc}{section}{Diagrams}
-\subsection*{Circuit Diagram of ASK System}
+\subsection*{Block Diagram \& Waveform of ASK System}
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=.95\textwidth]{ckt.png}
-    \caption{Circuit Diagram of ASK System}
-    \label{fig:ask}
+    \begin{multicols}{2}
+        \includegraphics[width=.95\linewidth]{ask_modulator.png}
+        \caption{Block Diagram of ASK System}
+        \label{fig:ask_modulator}
+
+        \includegraphics[width=.95\linewidth]{ask_modulated_waveform.jpg}
+        \caption{Waveform of ASK System}
+        \label{fig:ask_waveform}
+    \end{multicols}
 \end{figure}
 
-\subsection*{Circuit Diagram of FSK System}
+\subsection*{Block Diagram \& Waveform of FSK System}
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=.95\textwidth]{ckt.png}
-    \caption{Circuit Diagram of FSK System}
-    \label{fig:fsk}
+    \begin{multicols}{2}
+        \includegraphics[width=.95\linewidth]{fsk_modulator.png}
+        \caption{Block Diagram of FSK System}
+        \label{fig:fsk_modulator}
+
+        \includegraphics[width=.95\linewidth]{fsk_modulated_waveform.jpg}
+        \caption{Waveform of FSK System}
+        \label{fig:fsk_waveform}
+    \end{multicols}
 \end{figure}
 
-\subsection*{Circuit Diagram of PSK System}
+\subsection*{Block Diagram \& Waveform of BPSK System}
 \begin{figure}[H]
     \centering
-    % \includegraphics[width=.95\textwidth]{ckt.png}
-    \caption{Circuit Diagram of PSK System}
-    \label{fig:psk}
+    \begin{multicols}{2}
+        \includegraphics[width=.95\linewidth]{bspk_modulator.jpg}
+        \caption{Block Diagram of BPSK System}
+        \label{fig:psk_modulator}
+
+        \includegraphics[width=.95\linewidth]{bspk_modulated_output_wave.jpg}
+        \caption{Waveform of BPSK System}
+        \label{fig:psk_waveform}
+    \end{multicols}
 \end{figure}
 
 \section*{Procedure}
